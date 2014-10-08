@@ -58,4 +58,36 @@ class RuleTest < Minitest::Unit::TestCase
     assert_equal r1.pass?(ip), false
   end
 
+  def test_out_of_ip_blocked
+    ip = "192.168.1.10/24"
+    ip2 = "192.168.1.11/24"
+
+    r1 = Firewall::Rule.new(ip, false)
+    assert_equal r1.pass?(ip2), false
+  end
+
+  def test_out_of_ip_blocked_2
+    ip = "192.168.1.10/24"
+    ip2 = "192.168.2.10/24"
+
+    r1 = Firewall::Rule.new(ip, false)
+    assert_equal r1.pass?(ip2), false
+  end
+
+  def test_out_of_ip_blocked_3
+    ip = "192.168.1.10/24"
+    ip2 = "192.168.1.11"
+
+    r1 = Firewall::Rule.new(ip, false)
+    assert_equal r1.pass?(ip2), false
+  end
+
+  def test_in_network_allowed
+    ip = "192.168.1.10/24"
+    ip2 = "192.168.1.10"
+
+    r1 = Firewall::Rule.new(ip, true)
+    assert_equal r1.pass?(ip2), true
+  end
+
 end

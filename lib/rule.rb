@@ -1,9 +1,10 @@
 module Firewall
   class Rule
 
-    def initialize(ip, allowed)
+    def initialize(ip, allowed, condition = nil)
       @ip = IPAddress.parse ip
       @allowed = allowed
+      @condition = condition
     end
 
     def ip
@@ -17,7 +18,7 @@ module Firewall
     def pass? str_ip
       ip = IPAddress.parse str_ip
       if @ip.prefix == 32 or ! @ip.network? # single address
-        @ip.address == ip.address ? @allowed : ! @allowed
+        @ip.address == ip.address ? @allowed : false
       else # network
         @ip.include?(ip) ? @allowed : false
       end
