@@ -5,10 +5,6 @@ require "ipaddress"
 module Firewall
   class Firewall
 
-    def add(x, y)
-      x + y
-    end
-
     def initialize(default = false)
       @default = default
       @rules = []
