@@ -63,6 +63,17 @@ fw.allowed?("192.168.1.1", true) # true
 fw.allowed?("192.168.1.1", false) # false
 ```
 
+or
+
+```
+fw = Firewall::Firewall.new(false)
+r = Firewall::ComplexRule.new("192.168.1.1", true, {value: true})
+fw.add_rule(r)
+
+fw.allowed?("192.168.1.1", true) # true
+fw.allowed?("192.168.1.1", false) # false
+```
+
 ## Contributing
 
 1. Fork it ( https://github.com/davidterranova/firewall/fork )

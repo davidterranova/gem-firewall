@@ -51,5 +51,13 @@ class ComplexRuleTest < Minitest::Unit::TestCase
     assert_equal r1.pass?(ip2), false
   end
 
+  def test_complex_rule_with_value
+    ip = "192.168.1.10/24"
+
+    r1 = Firewall::ComplexRule.new(ip, true, {value: 'value'})
+    assert_equal r1.pass?(ip, 'value'), true
+    assert_equal r1.pass?(ip, 'plop'), false
+  end
+
 
 end
