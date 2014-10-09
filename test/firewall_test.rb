@@ -105,4 +105,16 @@ class FirewallTest < Minitest::Unit::TestCase
     assert_equal @fw.allowed?(ip), true
   end
 
+  def test_multiple_rules
+    network = "192.168.1.0/24"
+    ip = "192.168.1.10"
+
+    r1 = Firewall::Rule.new(network, false)
+    r2 = Firewall::ComplexRule.new(network, true)
+    @fw.add_rule r2
+    @fw.add_rule r1
+
+    assert_equal @fw.allowed?(ip), true
+  end
+
 end

@@ -7,7 +7,7 @@ module Firewall
       @method = check[:method]
     end
 
-    def pass?(ip, value)
+    def pass?(ip, value = nil)
       pass = false
       if @delegate
         pass = (super(ip) and (value == @delegate.send(@method)))

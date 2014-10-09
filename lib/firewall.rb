@@ -19,11 +19,15 @@ module Firewall
       @rules << rule
     end
 
-    def allowed? ip
+    def allowed? *args
       allowed = @default
       @rules.each do |rule|
-        #puts "Test #{rule} with #{ip}"
-        allowed = allowed || rule.pass?(ip)
+        if rule.kind_of? ComplexRule
+          value = (args.length > 1) ? args[1] : nil
+          allowed = (allowed || rule.pass?(args[0], value))
+        else
+          allowed = (allowed || rule.pass?(args[0]))
+        end
       end
 
       allowed
