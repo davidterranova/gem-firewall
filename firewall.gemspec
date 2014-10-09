@@ -4,7 +4,7 @@ $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'firewall/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "firewall"
+  spec.name          = "gem-firewall"
   spec.version       = Firewall::VERSION
   spec.authors       = ["Terranova David"]
   spec.email         = ["dterranova@adhara-cybersecurity.com"]
