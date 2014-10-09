@@ -1,6 +1,7 @@
 require "firewall/version"
-require "rule"
 require "ipaddress"
+require "rule"
+require "complex_rule"
 
 module Firewall
   class Firewall
