@@ -90,4 +90,13 @@ class RuleTest < Minitest::Unit::TestCase
     assert_equal r1.pass?(ip2), true
   end
 
+  def test_all_match
+    network = "0.0.0.0"
+    ip = "192.168.2.10/24"
+
+    r1 = Firewall::Rule.new(network, true)
+
+    assert_equal r1.pass?(ip), true
+  end
+
 end

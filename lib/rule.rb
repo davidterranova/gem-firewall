@@ -17,6 +17,7 @@ module Firewall
     def pass? str_ip
       value = false
       ip = IPAddress.parse str_ip
+
       if @ip.prefix == 32 or ! @ip.network? # single address
         if @ip.address == ip.address
           value = @allowed
@@ -25,6 +26,10 @@ module Firewall
         if @ip.include?(ip)
           value = @allowed
         end
+      end
+
+      if @ip.address == "0.0.0.0"
+        value = @allowed
       end
 
       value
