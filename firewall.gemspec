@@ -10,7 +10,7 @@ Gem::Specification.new do |spec|
   spec.email         = ["dterranova@adhara-cybersecurity.com"]
   spec.summary       = %q{IP based authorisation system}
   spec.description   = %q{IP based authorisation system}
-  spec.homepage      = ""
+  spec.homepage      = "https://github.com/davidterranova/gem-firewall"
   spec.license       = "MIT"
 
   spec.files         = `git ls-files -z`.split("\x0")
